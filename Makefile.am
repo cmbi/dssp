@@ -30,9 +30,7 @@ mkdssp_LDADD	=	$(shared_LDADD)
 src/matrix.$(OBJEXT): mtrx/matrices.h
 
 
-test_readpdb_SOURCES	=	src/fasta.cpp \
-										src/fasta.h \
-										src/iocif.cpp \
+test_readpdb_SOURCES	=	src/iocif.cpp \
 										src/mas.cpp \
 										src/primitives-3d.cpp \
 										src/primitives-3d.h \
