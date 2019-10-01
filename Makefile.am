@@ -27,8 +27,6 @@ mkdssp_SOURCES	=	src/dssp.cpp \
 
 mkdssp_LDADD	=	$(shared_LDADD)
 
-src/matrix.$(OBJEXT): mtrx/matrices.h
-
 
 test_readpdb_SOURCES	=	src/iocif.cpp \
 										src/mas.cpp \
@@ -52,20 +50,6 @@ AM_CPPFLAGS	=	-std=c++11 \
 							$(BOOST_CPPFLAGS) \
 							-I$(srcdir)/src/
 
-BUILT_SOURCES	=	mtrx/matrices.h
-CLEANFILES =	mtrx/matrices.h
-EXTRA_DIST =	mtrx/mkmat_h.pl \
-							mtrx/BLOSUM30 \
-							mtrx/BLOSUM45 \
-							mtrx/BLOSUM62 \
-							mtrx/BLOSUM80 \
-							mtrx/GONNET250 \
-							mtrx/PAM20 \
-							mtrx/PAM350 \
-							mtrx/PAM60
-
-mtrx/matrices.h: mtrx/mkmat_h.pl
-	$(PERL) mtrx/mkmat_h.pl mtrx/
 
 if HAVE_CPPCHECK
 cppcheck:
