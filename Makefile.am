@@ -30,22 +30,6 @@ mkdssp_LDADD	=	$(shared_LDADD)
 src/matrix.$(OBJEXT): mtrx/matrices.h
 
 
-test_fasta_SOURCES	=	src/fasta.cpp \
-										src/fasta.h \
-										src/iocif.cpp \
-										src/mas.cpp \
-										src/primitives-3d.cpp \
-										src/primitives-3d.h \
-										src/structure.cpp \
-										src/structure.h \
-										src/buffer.h \
-										src/align-2d.h \
-										src/utils.cpp \
-										tests/test_fasta.cpp
-
-test_fasta_LDADD	=	$(shared_LDADD) \
-									$(BOOST_UNIT_TEST_FRAMEWORK_LIB)
-
 test_readpdb_SOURCES	=	src/fasta.cpp \
 										src/fasta.h \
 										src/iocif.cpp \
