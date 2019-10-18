@@ -6,7 +6,6 @@
 *.o
 *.obj
 obj/
-test_*
 
 ## Compiled Dynamic libraries
 *.so
