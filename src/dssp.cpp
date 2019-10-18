@@ -34,12 +34,11 @@ std::string FixedLengthString(const int64 number, const uint64 length)
     std::string s = std::to_string(number);
 
     if (s.length() < length)
-        s = s.insert(0, length - s.length, ' ');
+        s = s.insert(0, length - s.length(), ' ');
     else if (s.length() > length)
     {
         // make and arrow: "--->"
-        s = s.replace(s.end() - 1, 1, '>');
-        s = s.replace(0, s.end() - 1, '-');
+        s = std::string(length - 1, '-') + ">";
     }
     return s;
 }
@@ -120,6 +119,7 @@ std::string ResidueToDSSPLine(const MResidue& residue)
   for (uint32 i = 0; i < 2; ++i)
   {
     NHO[i] = ONH[i] = "0, 0.0";
+    nNHO[i] = nONH[i] = 0;
 
     if (acceptors[i].residue != nullptr)
     {
