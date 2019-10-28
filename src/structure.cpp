@@ -1393,7 +1393,7 @@ void MProtein::ReadmmCIF(std::istream& is, bool cAlphaOnly)
   // HEADER
   std::string keywords = data.get("_struct_keywords.text").substr(0, 39);
   mHeader = (boost::format("HEADER    %s %s%s %s") %
-    keywords % std::string(39 - keywords.length(), ' ') % data.get("_database_PDB_rev.date_original") % mID).str();
+    keywords % std::string(49 - keywords.length(), ' ') % data.get("_database_PDB_rev.date_original") % mID).str();
 
   // COMPND
   foreach (const mmCIF::row& desc, data["_entity"])
