@@ -4,8 +4,8 @@
 //       (See accompanying file LICENSE_1_0.txt or copy at
 //             http://www.boost.org/LICENSE_1_0.txt)
 
-#ifndef XSSP_MAS_H
-#define XSSP_MAS_H
+#ifndef DSSP_MAS_H
+#define DSSP_MAS_H
 
 #pragma once
 

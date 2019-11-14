@@ -1,5 +1,5 @@
-#ifndef XSSP_IOCIF_H
-#define XSSP_IOCIF_H
+#ifndef DSSP_IOCIF_H
+#define DSSP_IOCIF_H
 
 #pragma once
 

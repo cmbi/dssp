@@ -6,8 +6,8 @@
 //
 // some data types and routines for working with 3d data
 
-#ifndef XSSP_PRIMITIVES3D_H
-#define XSSP_PRIMITIVES3D_H
+#ifndef DSSP_PRIMITIVES3D_H
+#define DSSP_PRIMITIVES3D_H
 
 #pragma once
 
