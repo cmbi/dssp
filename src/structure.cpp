@@ -1284,7 +1284,14 @@ void MProtein::ReadPDB(std::istream& is, bool cAlphaOnly)
         atom.mType = kUnknownAtom;
       }
 
-      if (atom.mType == kHydrogen)
+      /* As of dssp-3.1.4, lines with Element symbol H at positions 77-78
+       * will be skipped. This could potentially create inconsistent ACC if a
+       * line has <=76 characters (but >=54 characters and is therefore legal
+       * PDB format. To fix this issue, we should judge element type by
+       * [1] atom.mType at position 77-78, or
+       * [2] (in case [1] is undefined), atom.mName at position 13-16 */
+      if (atom.mType == kHydrogen || (atom.mType==kUnknownAtom && 
+          atom.mName[0]=='H'))
         continue;
 
       prevAtom = atom;
