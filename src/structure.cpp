@@ -1002,7 +1002,7 @@ void MChain::GetSequence(std::string& outSequence) const
 struct MResidueID
 {
   std::string chain;
-  uint16 seqNumber;
+  int64 seqNumber;
   std::string insertionCode;
 
   bool operator<(const MResidueID& o) const
@@ -1294,6 +1294,7 @@ void MProtein::ReadPDB(std::istream& is, bool cAlphaOnly)
       {
         if (VERBOSE)
           std::cerr << e.what() << std::endl;
+
         continue;
       }
 
@@ -1445,7 +1446,7 @@ void MProtein::ReadmmCIF(std::istream& is, bool cAlphaOnly)
       continue;
 
     ssbond.first.chain = ss["ptnr1_label_asym_id"];
-    ssbond.first.seqNumber = boost::lexical_cast<uint16>(
+    ssbond.first.seqNumber = boost::lexical_cast<int64>(
         ss["ptnr1_label_seq_id"]);
     ssbond.first.insertionCode = ss["pdbx_ptnr1_PDB_ins_code"];
     if (ssbond.first.insertionCode == "?")
@@ -1559,7 +1560,9 @@ void MProtein::ReadmmCIF(std::istream& is, bool cAlphaOnly)
   }
 
   if (not atoms.empty())
+  {
     AddResidue(atoms);
+  }
 
   // map the sulfur bridges
   uint32 ssbondNr = 1;
@@ -1794,13 +1797,17 @@ void MProtein::GetPoints(std::vector<MPoint>& outPoints) const
 void MProtein::Translate(const MPoint& inTranslation)
 {
   foreach (MChain* chain, mChains)
+  {
     chain->Translate(inTranslation);
+  }
 }
 
 void MProtein::Rotate(const MQuaternion& inRotation)
 {
   foreach (MChain* chain, mChains)
+  {
     chain->Rotate(inRotation);
+  }
 }
 
 void MProtein::CalculateSecondaryStructure(bool inPreferPiHelices)
@@ -1808,8 +1815,10 @@ void MProtein::CalculateSecondaryStructure(bool inPreferPiHelices)
   std::vector<MResidue*> residues;
   residues.reserve(mResidueCount);
   foreach (const MChain* chain, mChains)
+  {
     residues.insert(residues.end(), chain->GetResidues().begin(),
                     chain->GetResidues().end());
+  }
 
   if (VERBOSE)
     std::cerr << "using " << residues.size() << " residues" << std::endl;
