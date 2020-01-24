@@ -1748,8 +1748,8 @@ void MProtein::AddResidue(const std::vector<MAtom>& inAtoms)
     if (prev != nullptr and not prev->ValidDistance(*r))
     {
       if (VERBOSE)
-        std::cerr << boost::format("The distance between residue %1% and %2% is larger than the maximum peptide bond length")
-            % prev->GetNumber() % resNumber << std::endl;
+        std::cerr << boost::format("Chain %1% : The distance between residue %2% and %3% is larger than the maximum peptide bond length")
+            % chain.GetChainID() % prev->GetNumber() % resNumber << std::endl;
 
       ++mChainBreaks;
       r->SetNumber(resNumber + 1);
