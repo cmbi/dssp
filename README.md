@@ -36,7 +36,7 @@ Download and uncompress the dssp [source code archive][2] (version >= 2.2.6):
 
     wget https://github.com/cmbi/dssp/archive/dssp-?.?.?.tar.gz
     tar -zxvf dssp-?.?.?.tar.gz
-    cd dssp-?.?.?.tar.gz
+    cd dssp-?.?.?
 
 Configure and build the dssp executables:
 
