@@ -30,7 +30,19 @@ System libraries:
 * automake
 * autotools-dev
 
-### Instructions
+### Instructions to build in Docker
+
+This requires docker >= 1.12.3 and docker-compose >= 1.8.1.
+
+From the repository, run:
+
+    docker-compose build
+
+Then, to run mkdssp:
+
+    docker-compose run dssp ./mkdssp
+
+### Instructions for installing mkdssp locally
 
 Download and uncompress the dssp [source code archive][2] (version >= 2.2.6):
 
