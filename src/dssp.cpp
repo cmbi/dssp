@@ -49,10 +49,10 @@ std::string ResidueToDSSPLine(const MResidue& residue)
 /*
   This is the header line for the residue lines in a DSSP file:
 
-  #  RESIDUE AA STRUCTURE BP1 BP2  ACC     N-H-->O    O-->H-N    N-H-->O    O-->H-N    TCO  KAPPA ALPHA  PHI   PSI    X-CA   Y-CA   Z-CA           CHAIN AUTHCHAIN
+  #  RESIDUE AA STRUCTURE BP1 BP2  ACC     N-H-->O    O-->H-N    N-H-->O    O-->H-N    TCO  KAPPA ALPHA  PHI   PSI    X-CA   Y-CA   Z-CA
  */
   boost::format kDSSPResidueLine(
-  "%5.5s%5.5s%1.1s%1.1s %c  %c %c%c%c%c%c%c%c%4.4s%4.4s%c%4.4s %11s%11s%11s%11s  %6.3f%6.1f%6.1f%6.1f%6.1f %6.1f %6.1f %6.1f             %4.4s      %4.4s %10s %10s %10s %10s %10s %10s %10s %10s");
+  "%5.5s%5.5s%1.1s%1.1s %c  %c %c%c%c%c%c%c%c%4.4s%4.4s%c%4.4s %11s%11s%11s%11s  %6.3f%6.1f%6.1f%6.1f%6.1f %6.1f %6.1f %6.1f");
 
   const MAtom& ca = residue.GetCAlpha();
 
@@ -150,11 +150,7 @@ std::string ResidueToDSSPLine(const MResidue& residue)
     FixedLengthString(bp[0], 4) % FixedLengthString(bp[1], 4) % sheet % FixedLengthString(floor(residue.Accessibility() + 0.5), 4) %
     NHO[0] % ONH[0] % NHO[1] % ONH[1] %
     residue.TCO() % residue.Kappa() % alpha % residue.Phi() % residue.Psi() %
-    ca.mLoc.mX % ca.mLoc.mY % ca.mLoc.mZ % long_ChainID1 % long_ChainID2 %
-    FixedLengthString(residue.GetNumber(), 10) % FixedLengthString(ca.mResSeq, 10) %
-    FixedLengthString(bp[0], 10) % FixedLengthString(bp[1], 10) %
-    FixedLengthString(nNHO[0], 10) % FixedLengthString(nONH[0], 10) % FixedLengthString(nNHO[1], 10) % FixedLengthString(nONH[1], 10)
-  ).str();
+    ca.mLoc.mX % ca.mLoc.mY % ca.mLoc.mZ).str();
 }
 
 void WriteDSSP(MProtein& protein, std::ostream& os)
@@ -241,7 +237,7 @@ void WriteDSSP(MProtein& protein, std::ostream& os)
 
   // per residue information
 
-  os << "  #  RESIDUE AA STRUCTURE BP1 BP2  ACC     N-H-->O    O-->H-N    N-H-->O    O-->H-N    TCO  KAPPA ALPHA  PHI   PSI    X-CA   Y-CA   Z-CA            CHAIN AUTHCHAIN     NUMBER     RESNUM        BP1        BP2    N-H-->O    O-->H-N    N-H-->O    O-->H-N" << std::endl;
+  os << "  #  RESIDUE AA STRUCTURE BP1 BP2  ACC     N-H-->O    O-->H-N    N-H-->O    O-->H-N    TCO  KAPPA ALPHA  PHI   PSI    X-CA   Y-CA   Z-CA" << std::endl;
   boost::format kDSSPResidueLine(
     "%5.5s        !%c             0   0    0      0, 0.0     0, 0.0     0, 0.0     0, 0.0   0.000 360.0 360.0 360.0 360.0    0.0    0.0    0.0");
 
