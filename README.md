@@ -1,6 +1,6 @@
-The source code for building the 'mkdssp' program
-is bundled in the 'dssp' project. The DSSP executable is
-'mkdssp'.
+# Note
+
+This repo is outdated. Please go to https://github.com/PDB-REDO/dssp
 
 # Development
 
