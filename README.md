@@ -44,13 +44,7 @@ Then, to run mkdssp:
 
 ### Instructions for installing mkdssp locally
 
-Download and uncompress the dssp [source code archive][2] (version >= 2.2.6):
-
-    wget https://github.com/cmbi/dssp/archive/dssp-?.?.?.tar.gz
-    tar -zxvf dssp-?.?.?.tar.gz
-    cd dssp-?.?.?
-
-Configure and build the dssp executables:
+From inside this repository, configure and build the dssp executables:
 
     ./autogen.sh
     ./configure
